@@ -13,7 +13,7 @@ const chat = async (filePath = "./uploads/your-default-file.pdf", query) => {
   const loader = new PDFLoader(filePath);
 
   const data = await loader.load();
-
+  console.log("loader:", loader);
   // step 2:
   const textSplitter = new RecursiveCharacterTextSplitter({
     chunkSize: 500, //  (in terms of number of characters)
@@ -21,7 +21,7 @@ const chat = async (filePath = "./uploads/your-default-file.pdf", query) => {
   });
 
   const splitDocs = await textSplitter.splitDocuments(data);
-
+  console.log("split:", splitDocs);
   // step 3
 
   const embeddings = new OpenAIEmbeddings({
